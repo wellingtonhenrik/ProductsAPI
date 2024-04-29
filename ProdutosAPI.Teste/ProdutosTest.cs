@@ -18,7 +18,6 @@ public class ProdutosTest
     }
 
     [Fact]
-
     public async Task Test_Produtos_Post_Return_Create()
     {
         var command = new ProdutosCreateCommand()
@@ -63,7 +62,7 @@ public class ProdutosTest
         response.Nome = _faker.Commerce.ProductName();
         response.Quantidade = _faker.Random.Number(0, 100);
         response.Preco = decimal.Parse(_faker.Commerce.Price(2));
-        var resultUpdate = await client.PutAsync(_endpoint, TestHelper.CreateContent(response));
+        var resultUpdate = await client.PutAsync(_endpoint, TestHelper.CreateContent(response)); 
         resultUpdate.StatusCode.Should().Be(HttpStatusCode.OK);
 
     }

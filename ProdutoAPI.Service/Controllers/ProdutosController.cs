@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProdutosAPI.Application.Interfaces.Services;
 using ProdutosAPI.Application.Models.Commands;
 using ProdutosAPI.Application.Models.Queries;
@@ -7,6 +8,7 @@ namespace ProdutoAPI.Service.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class ProdutosController : ControllerBase
 {
     private readonly IProdutoAppService _produtoAppService;
@@ -51,6 +53,18 @@ public class ProdutosController : ControllerBase
 
         var response = await _produtoAppService.Delete(produtoDeleteCommand);
         return StatusCode(200, response);
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteAll()
+    {
+        var produtos = _produtoAppService.GetAll();
+        foreach (var produto in produtos.ToList())
+        {
+            await _produtoAppService.Delete(new ProdutosDeleteCommand{Id = produto.id});
+        }
+
+        return Ok();
     }
 
     [HttpGet("{id}")]

@@ -11,6 +11,7 @@ builder.Services.AddDbContextConfig(builder.Configuration); //SqlServer
 builder.Services.AddMongoDBConfig(builder.Configuration); //MongoDB
 builder.Services.AddDependecyInjector(); //Serviços
 builder.Services.AddMediatRConfig(); //MediatR 
+builder.Services.AddJwtBearerConfig(builder.Configuration); //JWT
 
 var app = builder.Build();
 
