@@ -4,7 +4,7 @@ using ProdutoAPI.Infra.IoC.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddSqaggerDoc();
+builder.Services.AddSwaggerDoc();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 builder.Services.AddDbContextConfig(builder.Configuration); //SqlServer

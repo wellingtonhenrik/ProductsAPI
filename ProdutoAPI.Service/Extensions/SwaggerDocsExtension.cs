@@ -4,7 +4,7 @@ namespace ProdutoAPI.Service.Extensions;
 
 public static class SwaggerDocsExtension
 {
-    public static IServiceCollection AddSqaggerDoc(this IServiceCollection services)
+    public static IServiceCollection AddSwaggerDoc(this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(options =>

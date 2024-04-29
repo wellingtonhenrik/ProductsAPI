@@ -23,12 +23,6 @@ public class ProdutosController : ControllerBase
         var response = await _produtoAppService.Create(command);
         return StatusCode(201, response);
     }
-    
-    public async Task<ProdutosDTO> teste()
-    {
-
-        return new ProdutosDTO();
-    }
 
     [HttpPut]
     [ProducesResponseType(typeof(ProdutosDTO), 200)]
